@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molka Amara - Data Scientist & AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --light: #f4f4f4;
+            --text: #333;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--highlight);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--highlight);
+            border-bottom-color: var(--highlight);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, white 0%, var(--highlight) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5em;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: var(--highlight);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff1744;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--highlight);
+        }
+
+        .btn-secondary:hover {
+            background: var(--highlight);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--highlight) 0%, var(--accent) 100%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 80px 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text h3 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.05em;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--highlight);
+        }
+
+        .stat-card .label {
+            font-size: 0.95em;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 100px 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            border-top: 4px solid var(--highlight);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(233, 69, 96, 0.2);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-header .role {
+            font-size: 0.9em;
+            color: var(--highlight);
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-body strong {
+            color: var(--primary);
+        }
+
+        .metrics-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--highlight);
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .metric-value {
+            color: var(--highlight);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, var(--highlight) 0%, #ff6b7a 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: white;
+            padding: 100px 2rem;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(233, 69, 96, 0.15);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3em;
+            margin-bottom: 1.5rem;
+            color: var(--highlight);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category li::before {
+            content: '→';
+            color: var(--highlight);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Experience Timeline */
+        .experience {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 100px 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--highlight) 0%, var(--accent) 100%);
+            top: 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--highlight);
+            border-radius: 50%;
+            top: 20px;
+            right: -41.5px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -41.5px;
+            right: auto;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--highlight);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: var(--highlight);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact h2::after {
+            background: var(--highlight);
+        }
+
+        .contact p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 2rem auto;
+            color: #e0e0e0;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+        }
+
+        .contact-link:hover {
+            border-color: var(--highlight);
+            background: rgba(233, 69, 96, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-link .icon {
+            font-size: 2em;
+        }
+
+        .contact-link .label {
+            font-weight: 600;
+        }
+
+        .contact-link .value {
+            color: var(--highlight);
+            font-size: 0.95em;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                margin-left: 0;
+                padding-left: 3rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item::before,
+            .timeline-item:nth-child(even)::before {
+                left: -41.5px;
+                right: auto;
+            }
+
+            .timeline-content {
+                border-left: 4px solid var(--highlight);
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card,
+        .skill-category,
+        .timeline-content {
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span>💼</span>
+            <span>Molka<span style="color: #e94560;">.</span></span>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MOLKA AMARA</h1>
+            <div class="subtitle">Data Scientist & AI Engineer</div>
+            <p>Building intelligent systems that transform data into actionable insights. Specialized in machine learning, NLP, and production-grade AI solutions.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Data-Driven Problem Solver</h3>
+                <p>I'm a passionate data scientist with real-world experience building AI systems for government, startups, and enterprises. My journey combines academic rigor with practical engineering skills.</p>
+                <p>With 2+ years of professional experience across multiple domains—medical AI, NLP, BI, and computer vision—I've learned that the best solutions come from understanding both the data and the business problem.</p>
+                <p>I'm committed to continuous learning, clean code practices, and creating measurable impact through data-driven decision-making.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">87%</div>
+                    <div class="label">F1-Score<br>(Medical AI)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">50+</div>
+                    <div class="label">Government<br>Stakeholders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">4</div>
+                    <div class="label">Production<br>Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">4</div>
+                    <div class="label">Languages<br>Spoken</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>🏥 Medical Image Classification</h3>
+                    <div class="role">AI Engineer | Qomics (2026)</div>
+                </div>
+                <div class="project-body">
+                    <p><strong>Challenge:</strong> Automated cervical cancer detection from histopathology slides with clinical-grade accuracy.</p>
+                    <div class="metrics-box">
+                        <div class="metric-item">
+                            <span class="metric-label">F1-Score</span>
+                            <span class="metric-value">87%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Sensitivity</span>
+                            <span class="metric-value">89%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Images Processed</span>
+                            <span class="metric-value">5,000+</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Inference Time</span>
+                            <span class="metric-value">45ms</span>
+                        </div>
+                    </div>
+                    <p><strong>Solution:</strong> CNN + Vision Transformer ensemble with advanced data augmentation and class balancing.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Medical AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>🎙️ Multilingual AI Voice Assistant</h3>
+                    <div class="role">Freelance AI Engineer (2025)</div>
+                </div>
+                <div class="project-body">
+                    <p><strong>Challenge:</strong> Build real-time conversational AI supporting multiple languages.</p>
+                    <div class="metrics-box">
+                        <div class="metric-item">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">92%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Response Time</span>
+                            <span class="metric-value">&lt;500ms</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Languages</span>
+                            <span class="metric-value">5+</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Uptime</span>
+                            <span class="metric-value">95%</span>
+                        </div>
+                    </div>
+                    <p><strong>Solution:</strong> End-to-end NLP pipeline with speech processing and web interface.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TensorFlow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>📊 Enterprise Analytics Dashboard</h3>
+                    <div class="role">Data Analyst | RNE (2025)</div>
+                </div>
+                <div class="project-body">
+                    <p><strong>Challenge:</strong> Consolidate real-time government data from 10+ sources for stakeholders.</p>
+                    <div class="metrics-box">
+                        <div class="metric-item">
+                            <span class="metric-label">Performance</span>
+                            <span class="metric-value">+40%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Active Users</span>
+                            <span class="metric-value">50+</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Departments</span>
+                            <span class="metric-value">3 Official</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Data Sources</span>
+                            <span class="metric-value">10+</span>
+                        </div>
+                    </div>
+                    <p><strong>Solution:</strong> Automated ETL pipeline with real-time Power BI dashboards.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">ETL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>🔐 Identity Verification System</h3>
+                    <div class="role">AI Engineer Intern | EY (2024)</div>
+                </div>
+                <div class="project-body">
+                    <p><strong>Challenge:</strong> Real-time biometric verification for secure online assessments.</p>
+                    <div class="metrics-box">
+                        <div class="metric-item">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">98%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Uptime</span>
+                            <span class="metric-value">99.2%</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Assessments</span>
+                            <span class="metric-value">1,500+</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Time Reduction</span>
+                            <span class="metric-value">-35%</span>
+                        </div>
+                    </div>
+                    <p><strong>Solution:</strong> YOLOv8 real-time detection deployed as production API.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🐍 Languages & Frameworks</h3>
+                    <ul>
+                        <li>Python (Core)</li>
+                        <li>SQL & Databases</li>
+                        <li>JavaScript & React</li>
+                        <li>Flask & Django</li>
+                        <li>Git & Version Control</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🧠 Machine Learning & AI</h3>
+                    <ul>
+                        <li>TensorFlow & PyTorch</li>
+                        <li>NLP & LLMs</li>
+                        <li>Computer Vision</li>
+                        <li>Deep Learning</li>
+                        <li>Scikit-learn</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📊 Data & Analytics</h3>
+                    <ul>
+                        <li>Power BI & Tableau</li>
+                        <li>Pandas & NumPy</li>
+                        <li>ETL Pipelines</li>
+                        <li>Data Visualization</li>
+                        <li>Statistical Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💼 Professional Skills</h3>
+                    <ul>
+                        <li>Agile Scrum Methodology</li>
+                        <li>Clean Architecture</li>
+                        <li>Production Deployment</li>
+                        <li>Team Collaboration</li>
+                        <li>Clear Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="experience" id="experience">
+        <h2>Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI Engineer</h3>
+                    <div class="company">Qomics Start-Up, Tunis</div>
+                    <div class="date">Jan 2026 – Jul 2026</div>
+                    <p>• Developed CNN + Vision Transformer models for cervical cancer classification</p>
+                    <p>• Achieved 87% F1-score on medical imaging dataset</p>
+                    <p>• Built scalable pipeline for large-scale medical image analysis</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Data Analyst</h3>
+                    <div class="company">RNE (National Business Registry), Tunis</div>
+                    <div class="date">Aug 2025 – Nov 2025</div>
+                    <p>• Designed Power BI dashboards for real-time KPI tracking</p>
+                    <p>• Automated ETL pipelines processing multiple data sources</p>
+                    <p>• Improved data processing efficiency by 40%</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI Engineer (Freelance)</h3>
+                    <div class="company">Independent Projects</div>
+                    <div class="date">Jan 2025 – Jul 2025</div>
+                    <p>• Built multilingual AI voice assistant with NLP backend</p>
+                    <p>• Developed React frontend for real-time interaction</p>
+                    <p>• Achieved 92% accuracy with &lt;500ms response time</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI Engineer Intern</h3>
+                    <div class="company">EY Tunisia, Tunis</div>
+                    <div class="date">Feb 2024 – Jul 2024</div>
+                    <p>• Developed candidate management system (Django + React)</p>
+                    <p>• Built YOLOv8 identity verification model with 98% accuracy</p>
+                    <p>• Deployed fraud detection and performance prediction models</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Data Science Intern</h3>
+                    <div class="company">EY Tunisia, Tunis</div>
+                    <div class="date">Jul 2023 – Aug 2023</div>
+                    <p>• Developed multilingual translation platform with LSTM models</p>
+                    <p>• Created user-friendly web interface</p>
+                    <p>• Optimized model performance through data analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Let's Connect</h2>
+        <p>I'm actively looking for Data Science & AI Engineer opportunities in Paris, Berlin, or Tunisia. Feel free to reach out!</p>
+        <div class="contact-links">
+            <a href="mailto:Molkaamara220@gmail.com" class="contact-link">
+                <div class="icon">📧</div>
+                <div class="label">Email</div>
+                <div class="value">Molkaamara220@gmail.com</div>
+            </a>
+            <a href="https://linkedin.com/in/molka-amara" target="_blank" class="contact-link">
+                <div class="icon">🔗</div>
+                <div class="label">LinkedIn</div>
+                <div class="value">linkedin.com/in/molka-amara</div>
+            </a>
+            <a href="https://github.com/molkaamara" target="_blank" class="contact-link">
+                <div class="icon">🐙</div>
+                <div class="label">GitHub</div>
+                <div class="value">github.com/molkaamara</div>
+            </a>
+            <a href="tel:+21621040409" class="contact-link">
+                <div class="icon">📱</div>
+                <div class="label">Phone</div>
+                <div class="value">+216 21 040 409</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Molka Amara. All rights reserved. | Open to opportunities in Paris 🇫🇷 • Berlin 🇩🇪 • Tunis 🇹🇳</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll animation class
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-category, .timeline-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
